@@ -1,6 +1,14 @@
 import { defineSchema, defineTable } from 'convex/server';
 import { v } from 'convex/values';
 
+export const productType = v.union(
+	v.literal('tarta'),
+	v.literal('kaka'),
+	v.literal('brod'),
+	v.literal('bakverk'),
+	v.literal('annat')
+);
+
 export const cakeCategory = v.union(
 	v.literal('ordinarie'),
 	v.literal('specialtarta'),
@@ -22,14 +30,19 @@ export const orderStatus = v.union(
 );
 
 export default defineSchema({
-	cakes: defineTable({
+	products: defineTable({
 		slug: v.string(),
 		nameSv: v.string(),
 		nameEn: v.string(),
 		descSv: v.string(),
 		descEn: v.string(),
-		category: cakeCategory,
+		productType,
+		category: v.optional(cakeCategory),
 		priceFrom: v.optional(v.number()),
+		unitSv: v.optional(v.string()),
+		unitEn: v.optional(v.string()),
+		weightGrams: v.optional(v.number()),
+		stockCount: v.optional(v.number()),
 		imageStorageId: v.optional(v.id('_storage')),
 		allergens: v.array(v.string()),
 		dietary: v.array(dietaryTag),
@@ -38,6 +51,7 @@ export default defineSchema({
 		sortOrder: v.number()
 	})
 		.index('by_slug', ['slug'])
+		.index('by_productType', ['productType', 'sortOrder'])
 		.index('by_category', ['category', 'sortOrder'])
 		.index('by_featured', ['featured', 'sortOrder']),
 

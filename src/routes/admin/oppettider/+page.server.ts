@@ -27,15 +27,17 @@ const presets: Record<string, { weekday: number; openTime: string; closeTime: st
 	]
 };
 
+const weekOrder = [1, 2, 3, 4, 5, 6, 0];
+
 export const actions: Actions = {
 	save: async ({ request }) => {
 		const f = await request.formData();
 		const weekday = Number(f.get('weekday'));
-		await upsertHours(weekday, {
-			openTime: String(f.get('openTime') ?? ''),
-			closeTime: String(f.get('closeTime') ?? ''),
-			closed: f.get('closed') === 'on'
-		});
+		const openTime = String(f.get('openTime') ?? '');
+		const closeTime = String(f.get('closeTime') ?? '');
+		const closed = f.get('closed') === 'on';
+		const safeClose = !closed && closeTime && openTime && closeTime < openTime ? openTime : closeTime;
+		await upsertHours(weekday, { openTime, closeTime: safeClose, closed });
 		return { ok: true, weekday };
 	},
 	applyPreset: async ({ request }) => {
@@ -45,5 +47,21 @@ export const actions: Actions = {
 		if (!days) return { ok: false };
 		await Promise.all(days.map((d) => upsertHours(d.weekday, d)));
 		return { ok: true };
+	},
+	copyFromPrevious: async ({ request }) => {
+		const f = await request.formData();
+		const wd = Number(f.get('weekday'));
+		const idx = weekOrder.indexOf(wd);
+		if (idx <= 0) return { ok: false };
+		const prevWd = weekOrder[idx - 1];
+		const all = await listHours();
+		const prev = all.find((h) => h.weekday === prevWd);
+		if (!prev) return { ok: false };
+		await upsertHours(wd, {
+			openTime: prev.openTime,
+			closeTime: prev.closeTime,
+			closed: prev.closed
+		});
+		return { ok: true, weekday: wd };
 	}
 };

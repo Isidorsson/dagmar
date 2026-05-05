@@ -21,7 +21,7 @@
 			<div class="mt-8 flex flex-wrap gap-3">
 				<a href="/bestall" class="btn-accent">{m('hero_cta_order')}</a>
 				<a
-					href="/tartor"
+					href="/sortiment"
 					class="btn border border-cream/20 bg-transparent text-cream hover:bg-cream/10"
 				>
 					{m('hero_cta_browse')}

@@ -37,7 +37,7 @@
 
 	const navItems = [
 		{ href: '/', key: 'nav_home' },
-		{ href: '/tartor', key: 'nav_cakes' },
+		{ href: '/sortiment', key: 'nav_assortment' },
 		{ href: '/bestall', key: 'nav_order' },
 		{ href: '/oppettider', key: 'nav_hours' },
 		{ href: '/om-oss', key: 'nav_about' },

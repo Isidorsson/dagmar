@@ -9,16 +9,19 @@
 import { env } from '$env/dynamic/private';
 import { env as publicEnv } from '$env/dynamic/public';
 import {
-	dummyCakes,
+	dummyProducts,
 	dummyReviews,
 	dummyHours,
 	dummyHolidays,
 	dummyNews,
 	dummySiteConfig,
 	dummyCustomOrders,
-	type DummyCake,
+	type DummyProduct,
+	type ProductType,
 	type DummyReview
 } from './dummy';
+
+export type { DummyProduct, ProductType };
 
 export const isLive = Boolean(publicEnv.PUBLIC_CONVEX_URL);
 export const isLiveReviews = Boolean(env.GOOGLE_PLACES_API_KEY && env.GOOGLE_PLACE_ID);
@@ -50,44 +53,51 @@ type News = {
 	pinned: boolean;
 };
 
-let cakes: DummyCake[] = [...dummyCakes];
+let products: DummyProduct[] = [...dummyProducts];
 let orders: Order[] = [...dummyCustomOrders];
 let news: News[] = [...dummyNews];
 let hours = [...dummyHours];
 let holidays = [...dummyHolidays];
 let siteConfig = { ...dummySiteConfig };
 
-export async function listCakes(opts: { category?: string; onlyAvailable?: boolean } = {}) {
-	let result = cakes;
-	if (opts.category) result = result.filter((c) => c.category === opts.category);
-	if (opts.onlyAvailable) result = result.filter((c) => c.available);
+export async function listProducts(
+	opts: {
+		productType?: ProductType;
+		category?: string;
+		onlyAvailable?: boolean;
+	} = {}
+) {
+	let result = products;
+	if (opts.productType) result = result.filter((p) => p.productType === opts.productType);
+	if (opts.category) result = result.filter((p) => p.category === opts.category);
+	if (opts.onlyAvailable) result = result.filter((p) => p.available);
 	return result.sort((a, b) => a.sortOrder - b.sortOrder);
 }
 
-export async function getCakeBySlug(slug: string) {
-	return cakes.find((c) => c.slug === slug) ?? null;
+export async function getProductBySlug(slug: string) {
+	return products.find((p) => p.slug === slug) ?? null;
 }
 
-export async function listFeaturedCakes(limit = 6) {
-	return cakes
-		.filter((c) => c.featured && c.available)
+export async function listFeaturedProducts(limit = 6, productType?: ProductType) {
+	return products
+		.filter((p) => p.featured && p.available && (!productType || p.productType === productType))
 		.sort((a, b) => a.sortOrder - b.sortOrder)
 		.slice(0, limit);
 }
 
-export async function createCake(input: Omit<DummyCake, '_id' | 'sortOrder'>) {
-	const sortOrder = cakes.length ? Math.max(...cakes.map((c) => c.sortOrder)) + 1 : 1;
-	const cake: DummyCake = { ...input, _id: `demo-${Date.now()}`, sortOrder };
-	cakes = [...cakes, cake];
-	return cake;
+export async function createProduct(input: Omit<DummyProduct, '_id' | 'sortOrder'>) {
+	const sortOrder = products.length ? Math.max(...products.map((p) => p.sortOrder)) + 1 : 1;
+	const product: DummyProduct = { ...input, _id: `demo-${Date.now()}`, sortOrder };
+	products = [...products, product];
+	return product;
 }
 
-export async function updateCake(id: string, patch: Partial<DummyCake>) {
-	cakes = cakes.map((c) => (c._id === id ? { ...c, ...patch } : c));
+export async function updateProduct(id: string, patch: Partial<DummyProduct>) {
+	products = products.map((p) => (p._id === id ? { ...p, ...patch } : p));
 }
 
-export async function deleteCake(id: string) {
-	cakes = cakes.filter((c) => c._id !== id);
+export async function deleteProduct(id: string) {
+	products = products.filter((p) => p._id !== id);
 }
 
 export async function listReviews(): Promise<{

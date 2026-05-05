@@ -21,10 +21,10 @@
 		</div>
 		<Inbox class="h-6 w-6 text-berry" />
 	</a>
-	<a href="/admin/tartor" class="card flex items-center justify-between p-5 transition hover:bg-cream-200">
+	<a href="/admin/sortiment" class="card flex items-center justify-between p-5 transition hover:bg-cream-200">
 		<div>
-			<div class="text-sm text-cocoa-500">{m('admin_cakes')}</div>
-			<div class="mt-1 font-display text-3xl">{data.cakeCount}</div>
+			<div class="text-sm text-cocoa-500">{m('admin_products')}</div>
+			<div class="mt-1 font-display text-3xl">{data.productCount}</div>
 		</div>
 		<Cake class="h-6 w-6 text-cocoa" />
 	</a>

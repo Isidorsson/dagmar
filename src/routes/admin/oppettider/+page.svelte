@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Check } from 'lucide-svelte';
+	import { ArrowUp, Check } from 'lucide-svelte';
 	import TimePicker24 from '$lib/components/TimePicker24.svelte';
 	import { makeT } from '$lib/i18n';
 
@@ -39,6 +39,27 @@
 
 	let savedWeekday: number | null = null;
 	$: if (form?.ok && typeof form?.weekday === 'number') savedWeekday = form.weekday;
+
+	function toMinutes(v: string): number {
+		const m = (v ?? '').match(/^(\d{1,2}):(\d{1,2})$/);
+		if (!m) return 0;
+		return parseInt(m[1], 10) * 60 + parseInt(m[2], 10);
+	}
+
+	function formatDuration(open: string, close: string, l: string): string {
+		const span = toMinutes(close) - toMinutes(open);
+		if (span <= 0) return '';
+		const hh = Math.floor(span / 60);
+		const mm = span - hh * 60;
+		if (l === 'sv') return `${hh} h ${mm} min öppet`;
+		return `${hh} h ${mm} m open`;
+	}
+
+	function previousWeekday(wd: number): number | null {
+		const idx = orderedWeekdays.indexOf(wd);
+		if (idx <= 0) return null;
+		return orderedWeekdays[idx - 1];
+	}
 </script>
 
 <svelte:head>
@@ -74,6 +95,9 @@
 	{#each orderedWeekdays as wd, idx (wd)}
 		{@const h = getRow(wd)}
 		{@const isToday = wd === today}
+		{@const prevWd = previousWeekday(wd)}
+		{@const duration = h.closed ? '' : formatDuration(h.openTime, h.closeTime, lang)}
+		{@const saveId = `save-${wd}`}
 		<li class="relative">
 			{#if isToday}
 				<span
@@ -81,48 +105,82 @@
 					aria-hidden="true"
 				></span>
 			{/if}
-			<form
-				method="POST"
-				action="?/save"
-				class="grid grid-cols-[2.25rem_8.5rem_1fr_auto_5.25rem] items-center gap-4 py-3 pl-3 pr-1"
-			>
-				<input type="hidden" name="weekday" value={wd} />
+			<div class="relative grid grid-cols-[2.25rem_8.5rem_1fr_auto_2rem_5.25rem] items-center gap-4 py-3 pl-3 pr-1">
+				<form method="POST" action="?/save" class="contents" id={saveId}>
+					<input type="hidden" name="weekday" value={wd} />
 
-				<span
-					class="font-display text-2xl font-semibold text-cocoa-500"
-					class:text-berry={isToday}
-					aria-hidden="true"
-				>
-					{initialMap[idx]}
-				</span>
-
-				<div class="flex flex-col">
-					<span class="text-sm font-medium tracking-tight" class:text-cocoa-500={h.closed}>
-						{m(`weekday_${wd}` as 'weekday_0')}
+					<span
+						class="font-display text-2xl font-semibold text-cocoa-500"
+						class:text-berry={isToday}
+						aria-hidden="true"
+					>
+						{initialMap[idx]}
 					</span>
-					<span class="text-[10px] uppercase tracking-wider text-cocoa-500">
-						{#if isToday}{lang === 'sv' ? 'Idag' : 'Today'}{:else}&nbsp;{/if}
-					</span>
-				</div>
 
-				<div class="flex items-baseline gap-2 text-cocoa">
-					<TimePicker24 name="openTime" value={h.openTime || '08:00'} disabled={h.closed} minuteStep={5} />
-					<span class="font-display text-base text-cocoa-500" aria-hidden="true">—</span>
-					<TimePicker24 name="closeTime" value={h.closeTime || '17:00'} disabled={h.closed} minuteStep={5} />
-					{#if h.closed}
-						<span class="ml-3 rounded-sm bg-berry/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-berry">
-							{lang === 'sv' ? 'Stängt' : 'Closed'}
+					<div class="flex flex-col">
+						<span class="text-sm font-medium tracking-tight" class:text-cocoa-500={h.closed}>
+							{m(`weekday_${wd}` as 'weekday_0')}
 						</span>
-					{/if}
-				</div>
+						<span class="text-[10px] uppercase tracking-wider text-cocoa-500">
+							{#if isToday}{lang === 'sv' ? 'Idag' : 'Today'}{:else}&nbsp;{/if}
+						</span>
+					</div>
 
-				<label class="flex cursor-pointer select-none items-center gap-1.5 text-xs text-cocoa-500 transition hover:text-cocoa">
-					<input type="checkbox" name="closed" checked={h.closed} class="h-3.5 w-3.5 accent-berry" />
-					{lang === 'sv' ? 'Stängt' : 'Closed'}
-				</label>
+					<div class="flex flex-col gap-1">
+						<div class="flex items-center gap-2 text-cocoa">
+							<TimePicker24
+								name="openTime"
+								value={h.openTime || '08:00'}
+								disabled={h.closed}
+								minuteStep={5}
+								ariaLabel={lang === 'sv' ? 'Öppnar' : 'Opens'}
+							/>
+							<span class="font-display text-base text-cocoa-500" aria-hidden="true">—</span>
+							<TimePicker24
+								name="closeTime"
+								value={h.closeTime || '17:00'}
+								disabled={h.closed}
+								minuteStep={5}
+								ariaLabel={lang === 'sv' ? 'Stänger' : 'Closes'}
+							/>
+							{#if h.closed}
+								<span class="ml-3 rounded-sm bg-berry/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-berry">
+									{lang === 'sv' ? 'Stängt' : 'Closed'}
+								</span>
+							{/if}
+						</div>
+						{#if duration}
+							<span class="text-[10px] uppercase tracking-[0.14em] text-cocoa-500">
+								{duration}
+							</span>
+						{/if}
+					</div>
+
+					<label class="flex cursor-pointer select-none items-center gap-1.5 text-xs text-cocoa-500 transition hover:text-cocoa">
+						<input type="checkbox" name="closed" checked={h.closed} class="h-3.5 w-3.5 accent-berry" />
+						{lang === 'sv' ? 'Stängt' : 'Closed'}
+					</label>
+				</form>
+
+				{#if prevWd !== null}
+					<form method="POST" action="?/copyFromPrevious" class="flex items-center justify-center">
+						<input type="hidden" name="weekday" value={wd} />
+						<button
+							type="submit"
+							class="copy-btn"
+							aria-label={lang === 'sv' ? 'Kopiera från föregående dag' : 'Copy from previous day'}
+							title={lang === 'sv' ? 'Kopiera från föregående dag' : 'Copy from previous day'}
+						>
+							<ArrowUp class="h-3.5 w-3.5" aria-hidden="true" />
+						</button>
+					</form>
+				{:else}
+					<span></span>
+				{/if}
 
 				<button
 					type="submit"
+					form={saveId}
 					class="rounded-md border border-cocoa/15 bg-transparent px-3 py-1.5 text-xs font-medium text-cocoa transition hover:border-cocoa hover:bg-cocoa hover:text-cream focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cocoa focus-visible:ring-offset-2 focus-visible:ring-offset-cream"
 					class:saved-flash={savedWeekday === wd}
 					aria-label={lang === 'sv' ? `Spara ${m(`weekday_${wd}` as 'weekday_0')}` : `Save ${m(`weekday_${wd}` as 'weekday_0')}`}
@@ -136,7 +194,7 @@
 						{lang === 'sv' ? 'Spara' : 'Save'}
 					{/if}
 				</button>
-			</form>
+			</div>
 		</li>
 	{/each}
 </ol>
@@ -168,9 +226,32 @@
 		background: rgb(110 127 74 / 0.12) !important;
 		color: var(--color-leaf) !important;
 	}
+	.copy-btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 1.5rem;
+		height: 1.5rem;
+		border-radius: 9999px;
+		background: transparent;
+		color: var(--color-cocoa-500);
+		border: 0;
+		cursor: pointer;
+		transition: background-color 0.15s, color 0.15s;
+	}
+	.copy-btn:hover {
+		background: rgba(58, 36, 24, 0.08);
+		color: var(--color-cocoa);
+	}
+	.copy-btn:focus-visible {
+		outline: none;
+		background: rgba(58, 36, 24, 0.08);
+		box-shadow: 0 0 0 2px rgba(168, 50, 74, 0.4);
+	}
 	@media (prefers-reduced-motion: reduce) {
 		.preset-link,
-		.saved-flash {
+		.saved-flash,
+		.copy-btn {
 			transition: none;
 		}
 	}

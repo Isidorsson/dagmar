@@ -9,7 +9,7 @@
 
 	const items = [
 		{ href: '/admin', label: 'admin_dashboard' as const, icon: ClipboardList },
-		{ href: '/admin/tartor', label: 'admin_cakes' as const, icon: Cake },
+		{ href: '/admin/sortiment', label: 'admin_products' as const, icon: Cake },
 		{ href: '/admin/bestallningar', label: 'admin_orders' as const, icon: ClipboardList },
 		{ href: '/admin/oppettider', label: 'admin_hours' as const, icon: Clock },
 		{ href: '/admin/nyheter', label: 'admin_news' as const, icon: Newspaper },
