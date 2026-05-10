@@ -20,7 +20,7 @@ import type { Cookies } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private';
 import { isLiveAuth } from './source';
 
-const COOKIE_NAME = 'dagmar_admin';
+const COOKIE_NAME = 'lorem_admin';
 const DEMO_PASSWORD = env.OWNER_DEMO_PASSWORD;
 
 export const authMode: 'live' | 'password' | 'bypass' = isLiveAuth

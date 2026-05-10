@@ -12,7 +12,7 @@ export async function sendMail(mail: Mail) {
 		const { Resend } = await import('resend');
 		const resend = new Resend(env.RESEND_API_KEY);
 		await resend.emails.send({
-			from: 'Dagmar Carlssons <bestall@dagmarcarlssons.se>',
+			from: 'Lorem Ipsum Bakery <orders@example.com>',
 			to: mail.to,
 			subject: mail.subject,
 			html: mail.html

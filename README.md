@@ -1,9 +1,9 @@
-# Dagmar Carlssons Hembageri — Website
+# Lorem Bakery — Demo Website
 
-Modern replacement for [dagmarcarlssons.se](https://www.dagmarcarlssons.se/), built for hand-off to the bakery owner.
+Generic bilingual bakery template built with SvelteKit. All copy and brand details are placeholder lorem ipsum — swap them for the real owner's content during hand-off.
 
-- **Public**: hero, cake gallery (filterable by category + dietary tag), custom-order form, real opening hours with holiday closures, Google reviews carousel, news banner, bilingual SV/EN.
-- **Admin**: login-protected CRUD over cakes, orders, hours, news, and site settings.
+- **Public**: hero, product gallery (filterable by category + dietary tag), custom-order form, real opening hours with holiday closures, Google reviews carousel, news banner, bilingual SV/EN.
+- **Admin**: login-protected CRUD over products, orders, hours, news, and site settings.
 
 ## Stack
 
@@ -22,7 +22,7 @@ Modern replacement for [dagmarcarlssons.se](https://www.dagmarcarlssons.se/), bu
 
 The site runs with **no API keys required**. When env vars are missing, `src/lib/server/source.ts` falls back to in-memory dummy data (`src/lib/server/dummy.ts`):
 
-- Cake catalogue → 6 sample cakes
+- Product catalogue → 10 sample items
 - Google reviews → 5 sample reviews
 - Custom order form → logs email to console instead of sending
 
@@ -49,7 +49,7 @@ src/
   lib/
     i18n.ts                     simple i18n helper (no build step)
     i18n/messages/{sv,en}.json  translation strings
-    components/                 Hero, CakeCard, ReviewCarousel, HoursWidget…
+    components/                 Hero, ProductCard, ReviewCarousel, HoursWidget…
     server/
       source.ts                 single switch: live or demo
       dummy.ts                  in-memory demo data
@@ -58,7 +58,7 @@ src/
   routes/
     +layout.svelte              header, footer, JSON-LD LocalBusiness
     +page.svelte                home
-    tartor/                     gallery + detail
+    sortiment/                  gallery + detail
     bestall/                    custom order form
     oppettider/                 opening hours + holidays
     kontakt/                    map, phone, email
@@ -94,7 +94,7 @@ static/                         favicon, robots.txt
    vercel env add ...   # all keys from .env.example
    vercel deploy --prod
    ```
-6. Point `dagmarcarlssons.se` DNS at Vercel.
+6. Point your domain DNS at Vercel.
 
 ## Env vars
 
@@ -114,7 +114,7 @@ OWNER_DEMO_PASSWORD=        # only used in demo mode
 ## Owner cheat sheet
 
 - Sign in at **/admin** (password from owner setup).
-- **Tårtor** — add new cake, edit, mark as featured (shows on homepage), delete.
+- **Sortiment** — add new product, edit, mark as featured (shows on homepage), delete.
 - **Beställningar** — see incoming custom-cake requests, set status (new → seen → accepted/declined).
 - **Öppettider** — change weekday hours; toggle "Closed" for permanent closures (holidays go in news banner or as extra `holidays` rows in production).
 - **Nyheter** — write announcements; pin one as a banner on the homepage.
@@ -122,4 +122,4 @@ OWNER_DEMO_PASSWORD=        # only used in demo mode
 
 ## License
 
-Private project. © Dagmar Carlssons Hembageri Eftr.
+Private project. Demo template — replace placeholder copy before shipping.

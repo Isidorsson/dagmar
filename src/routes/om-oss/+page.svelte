@@ -7,36 +7,36 @@
 
 	const history = {
 		sv: {
-			heading: 'Vår historia',
+			heading: 'Lorem ipsum',
 			body: [
-				'Dagmar Carlssons Hembageri Eftr. grundades 1935 på Egna Hem i Trollhättan.',
-				'1937 flyttade bageriet till Kungsgatan mitt inne i centrala Trollhättan.',
-				'Jan Andersson (VD) började som lärling vid 16 års ålder, och tog sedan över verksamheten 2002 tillsammans med Susanne Karlsson.'
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+				'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+				'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
 			]
 		},
 		en: {
-			heading: 'Our story',
+			heading: 'Lorem ipsum',
 			body: [
-				'Dagmar Carlssons Hembageri Eftr. was founded in 1935 in Egna Hem, Trollhättan.',
-				'In 1937 the bakery moved to Kungsgatan in the heart of central Trollhättan.',
-				'Jan Andersson (CEO) started as an apprentice at 16, and took over the bakery in 2002 together with Susanne Karlsson.'
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+				'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+				'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
 			]
 		}
 	};
 
 	const mission = {
 		sv: {
-			heading: 'Vår målsättning',
+			heading: 'Lorem ipsum',
 			body: [
-				'Vår målsättning är att vara det flexibla kvartersbageriet för alla som uppskattar hantverk av hög kvalitet.',
-				'Vi lägger stor vikt vid att tillverka bakverk utan tillsatser och med de bästa råvarorna.'
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.',
+				'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.'
 			]
 		},
 		en: {
-			heading: 'Our mission',
+			heading: 'Lorem ipsum',
 			body: [
-				'Our goal is to be the flexible neighbourhood bakery for everyone who values high-quality craftsmanship.',
-				'We take great care to bake without additives, using the very best ingredients.'
+				'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.',
+				'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.'
 			]
 		}
 	};
@@ -50,37 +50,37 @@
 
 	const team: Member[] = [
 		{
-			name: 'Jan Andersson',
-			role: { sv: 'VD & bagare', en: 'CEO & baker' },
+			name: 'Lorem Ipsum',
+			role: { sv: 'Lorem ipsum', en: 'Lorem ipsum' },
 			bio: {
-				sv: 'Jan Andersson, född 1962, började på Dagmar Carlssons Hembageri Eftr. som lärling vid 16 års ålder. Efter 24 år inom företaget tog Jan sedan över Dagmar Carlssons Hembageri Eftr. tillsammans med Susanne Karlsson. Dem har nu tillsammans drivit företaget sedan 2002 och brinner för företaget och dess mål att vara det flexibla bageriet/konditoriet.',
-				en: 'Jan Andersson, born 1962, joined Dagmar Carlssons as an apprentice at 16. After 24 years at the bakery he took over together with Susanne Karlsson. They have run the business since 2002 and share a passion for keeping it the flexible bakery and pastry shop it has always been.'
+				sv: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+				en: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.'
 			},
-			photo: 'https://api.dicebear.com/7.x/initials/svg?seed=Jan%20Andersson&backgroundColor=3a2418&textColor=f7efe2'
+			photo: 'https://api.dicebear.com/7.x/initials/svg?seed=Lorem%20Ipsum&backgroundColor=3a2418&textColor=f7efe2'
 		},
 		{
-			name: 'Susanne Karlsson',
-			role: { sv: 'Delägare & konditor', en: 'Co-owner & pastry chef' },
+			name: 'Dolor Sit',
+			role: { sv: 'Lorem ipsum', en: 'Lorem ipsum' },
 			bio: {
-				sv: 'Susanne Karlsson, född 1964, började på Dagmar Carlssons Hembageri Eftr. år 2000. 2002 tog hon tillsammans med Jan Andersson över Dagmar Carlssons Hembageri Eftr.',
-				en: 'Susanne Karlsson, born 1964, joined Dagmar Carlssons in 2000. In 2002 she took over the bakery together with Jan Andersson.'
+				sv: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+				en: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.'
 			},
-			photo: 'https://api.dicebear.com/7.x/initials/svg?seed=Susanne%20Karlsson&backgroundColor=a8324a&textColor=f7efe2'
+			photo: 'https://api.dicebear.com/7.x/initials/svg?seed=Dolor%20Sit&backgroundColor=a8324a&textColor=f7efe2'
 		},
 		{
-			name: 'Marie Grunander',
-			role: { sv: 'Konditor', en: 'Pastry chef' },
+			name: 'Amet Consectetur',
+			role: { sv: 'Lorem ipsum', en: 'Lorem ipsum' },
 			bio: {
-				sv: 'Marie Grunander, född 1970, började 1997 som lärling på Princess i Vänersborg. Efter ett år som lärling anställdes hon, och arbetade på Princess i 8 år. I oktober 2006 anställdes Marie som konditor på Dagmar Carlssons Hembageri Eftr. i Trollhättan.',
-				en: 'Marie Grunander, born 1970, began as an apprentice at Princess in Vänersborg in 1997. After her apprenticeship she stayed on as a pastry chef for 8 years. In October 2006 Marie joined Dagmar Carlssons as pastry chef in Trollhättan.'
+				sv: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+				en: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
 			},
-			photo: 'https://api.dicebear.com/7.x/initials/svg?seed=Marie%20Grunander&backgroundColor=6e7f4a&textColor=f7efe2'
+			photo: 'https://api.dicebear.com/7.x/initials/svg?seed=Amet%20Consectetur&backgroundColor=6e7f4a&textColor=f7efe2'
 		}
 	];
 
 	const teamHeading = {
-		sv: 'Vi som arbetar på Dagmar Carlssons Hembageri Eftr. i Trollhättan',
-		en: 'The team at Dagmar Carlssons Hembageri Eftr. in Trollhättan'
+		sv: 'Lorem ipsum dolor sit amet',
+		en: 'Lorem ipsum dolor sit amet'
 	};
 </script>
 
@@ -89,8 +89,8 @@
 	<meta
 		name="description"
 		content={lang === 'sv'
-			? 'Dagmar Carlssons Hembageri grundades 1935. Möt Jan, Susanne och Marie — bagarna bakom kvartersbageriet i Trollhättan.'
-			: 'Dagmar Carlssons Bakery was founded in 1935. Meet Jan, Susanne and Marie — the bakers behind the neighbourhood bakery in Trollhättan.'}
+			? 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+			: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'}
 	/>
 </svelte:head>
 

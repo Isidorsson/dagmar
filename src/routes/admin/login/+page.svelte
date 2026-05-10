@@ -41,8 +41,8 @@
 		</form>
 		<p class="mt-6 text-xs text-cocoa-500">
 			{lang === 'sv'
-				? 'Demo-lösenord: dagmar2026 (byt eller koppla på Clerk i produktion).'
-				: 'Demo password: dagmar2026 (change or wire up Clerk in production).'}
+				? 'Demo-lösenord: lorem2026 (byt eller koppla på Clerk i produktion).'
+				: 'Demo password: lorem2026 (change or wire up Clerk in production).'}
 		</p>
 	</div>
 </section>

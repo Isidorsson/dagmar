@@ -228,34 +228,34 @@ export type DummyReview = {
 
 export const dummyReviews: DummyReview[] = [
 	{
-		authorName: 'Anna Lindberg',
+		authorName: 'Lorem Ipsum',
 		rating: 5,
-		text: 'Bästa prinsesstårtan i Trollhättan! Personalen är otroligt trevlig och tårtorna smakar som hos farmor.',
-		relativeTime: 'för 2 veckor sedan'
+		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		relativeTime: 'lorem ipsum'
 	},
 	{
-		authorName: 'Mikael Johansson',
+		authorName: 'Dolor Sit',
 		rating: 5,
-		text: 'Beställde en tårta med eget motiv till min dotters dop — överträffade alla förväntningar. Ren konst!',
-		relativeTime: 'för en månad sedan'
+		text: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+		relativeTime: 'lorem ipsum'
 	},
 	{
-		authorName: 'Sara Eriksson',
+		authorName: 'Amet Consectetur',
 		rating: 5,
-		text: 'Glutenfria tårtorna är fantastiska. Äntligen ett bageri som tar allergier på allvar utan att kompromissa med smaken.',
-		relativeTime: 'för 3 veckor sedan'
+		text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+		relativeTime: 'lorem ipsum'
 	},
 	{
-		authorName: 'Lars Pettersson',
+		authorName: 'Adipiscing Elit',
 		rating: 4,
-		text: 'Trevligt litet hembageri med klassisk känsla. Kladdkakan är värd ett besök i sig.',
-		relativeTime: 'för 2 månader sedan'
+		text: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+		relativeTime: 'lorem ipsum'
 	},
 	{
-		authorName: 'Emma Nilsson',
+		authorName: 'Sed Eiusmod',
 		rating: 5,
-		text: 'Har anlitat dem till bröllop, dop och födelsedagar. Alltid lika fantastiskt resultat. Kan rekommenderas!',
-		relativeTime: 'för 1 vecka sedan'
+		text: 'Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et commodo pharetra.',
+		relativeTime: 'lorem ipsum'
 	}
 ];
 
@@ -291,10 +291,10 @@ export const dummyHolidays = [
 export const dummyNews = [
 	{
 		_id: 'n1',
-		titleSv: 'Sommarspecial: Jordgubbstårtor',
-		titleEn: 'Summer special: strawberry cakes',
-		bodySv: 'Färska svenska jordgubbar är här! Beställ vår säsongsspecial fram till 15 augusti.',
-		bodyEn: 'Fresh Swedish strawberries are here! Order our seasonal special until August 15.',
+		titleSv: 'Lorem ipsum dolor sit amet',
+		titleEn: 'Lorem ipsum dolor sit amet',
+		bodySv: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.',
+		bodyEn: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.',
 		imageUrl: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=1200&q=80',
 		publishedAt: Date.now() - 1000 * 60 * 60 * 24 * 3,
 		pinned: true
@@ -303,39 +303,39 @@ export const dummyNews = [
 
 export const dummySiteConfig = {
 	googlePlaceId: '',
-	instagramHandle: 'dagmarcarlssons',
-	contactPhone: '0520-10671',
-	contactEmail: 'info@dagmarcarlssons.se',
-	address: 'Kungsgatan 16, 461 31 Trollhättan',
+	instagramHandle: 'loremipsum',
+	contactPhone: '000-0000000',
+	contactEmail: 'hello@example.com',
+	address: 'Lorem Street 1, 000 00 Lorem City',
 	mapEmbedUrl:
-		'https://www.google.com/maps/embed/v1/place?key=DEMO&q=Kungsgatan+16,+Trollh%C3%A4ttan'
+		'https://www.google.com/maps/embed/v1/place?key=DEMO&q=Lorem+Street+1,+Lorem+City'
 };
 
 export const dummyCustomOrders = [
 	{
 		_id: 'o1',
-		customerName: 'Lisa Bergström',
-		email: 'lisa@example.com',
-		phone: '070-1234567',
+		customerName: 'Lorem Ipsum',
+		email: 'lorem@example.com',
+		phone: '000-0000000',
 		desiredDate: '2026-05-20',
-		occasion: '50-årsfest',
-		designNotes: 'Stor tårta med rosa rosor och guldfärgad text "Grattis Mona 50!"',
+		occasion: 'Lorem ipsum',
+		designNotes: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
 		referenceImageUrl: null,
-		allergens: 'Inga',
+		allergens: 'Lorem ipsum',
 		servings: 30,
 		status: 'new' as const,
 		createdAt: Date.now() - 1000 * 60 * 60 * 6
 	},
 	{
 		_id: 'o2',
-		customerName: 'Johan Karlsson',
-		email: 'johan@example.com',
-		phone: '073-9876543',
+		customerName: 'Dolor Sit',
+		email: 'dolor@example.com',
+		phone: '000-0000000',
 		desiredDate: '2026-05-15',
-		occasion: 'Examen',
-		designNotes: 'Studentmössa i marsipan, vit grund med blåbär.',
+		occasion: 'Lorem ipsum',
+		designNotes: 'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		referenceImageUrl: null,
-		allergens: 'Glutenfri tack',
+		allergens: 'Lorem ipsum',
 		servings: 12,
 		status: 'seen' as const,
 		createdAt: Date.now() - 1000 * 60 * 60 * 30

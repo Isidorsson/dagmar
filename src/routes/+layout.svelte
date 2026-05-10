@@ -12,17 +12,17 @@
 	$: jsonLd = JSON.stringify({
 		'@context': 'https://schema.org',
 		'@type': 'Bakery',
-		name: 'Dagmar Carlssons Hembageri Eftr.',
+		name: 'Lorem Ipsum Bakery',
 		address: {
 			'@type': 'PostalAddress',
-			streetAddress: 'Kungsgatan 16',
-			postalCode: '461 31',
-			addressLocality: 'Trollhättan',
+			streetAddress: 'Lorem Street 1',
+			postalCode: '000 00',
+			addressLocality: 'Lorem City',
 			addressCountry: 'SE'
 		},
 		telephone: cfg.contactPhone,
 		email: cfg.contactEmail,
-		url: 'https://dagmarcarlssons.se',
+		url: 'https://example.com',
 		openingHoursSpecification: data.hours
 			.filter((h) => !h.closed)
 			.map((h) => ({
@@ -57,7 +57,7 @@
 			>
 				<Cake class="h-4 w-4" />
 			</span>
-			<span class="hidden sm:inline">Dagmar Carlssons</span>
+			<span class="hidden sm:inline">Lorem Ipsum</span>
 		</a>
 		<nav class="ml-auto hidden items-center gap-1 text-sm md:flex">
 			{#each navItems as item (item.href)}
@@ -89,7 +89,7 @@
 <footer class="border-t border-cream-200 bg-cream-50 px-6 py-12">
 	<div class="mx-auto grid max-w-7xl gap-10 md:grid-cols-4">
 		<div>
-			<div class="font-display text-lg font-semibold">Dagmar Carlssons Hembageri</div>
+			<div class="font-display text-lg font-semibold">Lorem Ipsum Bakery</div>
 			<p class="mt-2 text-sm text-cocoa-500">{m('footer_made_with')}</p>
 		</div>
 		<div class="text-sm">
@@ -121,6 +121,6 @@
 		</div>
 	</div>
 	<p class="mx-auto mt-10 max-w-7xl text-xs text-cocoa-500">
-		© {new Date().getFullYear()} Dagmar Carlssons Hembageri Eftr.
+		© {new Date().getFullYear()} Lorem Ipsum Bakery
 	</p>
 </footer>

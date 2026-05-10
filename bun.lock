@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "dagmar-carlssons",
+      "name": "lorem-bakery",
       "dependencies": {
         "convex": "^1.17.0",
         "lucide-svelte": "^0.460.0",

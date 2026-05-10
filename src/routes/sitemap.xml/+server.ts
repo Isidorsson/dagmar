@@ -1,7 +1,7 @@
 import type { RequestHandler } from './$types';
 import { listProducts } from '$lib/server/source';
 
-const SITE = 'https://dagmarcarlssons.se';
+const SITE = 'https://example.com';
 const TYPE_PATHS = ['/sortiment/tartor', '/sortiment/kakor', '/sortiment/brod', '/sortiment/bakverk', '/sortiment/annat'];
 
 export const GET: RequestHandler = async () => {

@@ -1,12 +1,12 @@
-# Status — Dagmar Carlssons site
+# Status — Bakery demo site
 
 ## Done
 
 - SvelteKit 2 + TS + Tailwind 4 scaffold, Vercel adapter
 - Bilingual SV/EN (cookie + `?lang=` toggle, no build step)
-- Public routes: `/`, `/tartor`, `/tartor/[slug]`, `/bestall`, `/oppettider`, `/kontakt`, `/om-oss`
-- Admin routes (3 auth modes — see README): dashboard, cakes CRUD, orders inbox, hours editor, news editor, settings
-- "Öppet nu" widget — Stockholm time, holiday-aware
+- Public routes: `/`, `/sortiment`, `/sortiment/[slug]`, `/bestall`, `/oppettider`, `/kontakt`, `/om-oss`
+- Admin routes (3 auth modes — see README): dashboard, products CRUD, orders inbox, hours editor, news editor, settings
+- "Open now" widget — Stockholm time, holiday-aware
 - Custom order form → validation, success screen, email to console (or Resend if configured)
 - Google reviews carousel — dummy reviews now, swaps to live Places API when key set
 - News banner (dismissible, sessionStorage)
@@ -23,7 +23,7 @@ bun install
 bun run dev
 ```
 
-Open http://localhost:5173 · admin at `/admin` (pw `dagmar2026`).
+Open http://localhost:5173 · admin at `/admin` (pw `lorem2026`).
 
 ## Production swap (later)
 
@@ -42,5 +42,5 @@ Each is one env var + one file edit per the README. Code paths already wired.
 - Real image upload UI (currently URL paste)
 - Stripe deposits for custom orders
 - SMS notifications (Twilio)
-- Drag-reorder cakes in admin
+- Drag-reorder products in admin
 - Instagram embed on home
